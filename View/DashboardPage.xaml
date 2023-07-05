@@ -2,11 +2,174 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyWeather.View.DashboardPage"
+             Shell.NavBarIsVisible="False"
              Title="DashboardPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid  RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
+           VerticalOptions="FillAndExpand">
+        <Image Grid.Row="0"
+               Source="overlay.png"
+               Aspect="Fill"
+               HeightRequest="300"
+               VerticalOptions="StartAndExpand" />
+        <VerticalStackLayout Margin="20,50"
+                             HorizontalOptions="Start"
+                             Spacing="20"
+                             VerticalOptions="Start">
+            <Label FontSize="16"
+                   Text="{Binding }"
+                   TextColor="White"
+                   VerticalOptions="Center" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="0,20"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image HeightRequest="50"
+                       VerticalOptions="Center"
+                       WidthRequest="50"
+                       Source="weather.png" />
+                <Label FontAttributes="Bold"
+                       FontSize="70"
+                       Text="12"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+                <Label FontSize="34"
+                       Text="&#186;C"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <Label FontSize="16"
+                   HorizontalOptions="Center"
+                   Text="rain"
+                   TextColor="White" />
+            <Label FontSize="12"
+                   HorizontalOptions="Center"
+                   Text="June 15,10:30AM"
+                   TextColor="White" />
+        </VerticalStackLayout>
+        <Frame Grid.Row="1"
+               Margin="20,-40,20,0"
+               Padding="0"
+               HeightRequest="120"
+               HasShadow="True"
+               VerticalOptions="Start"
+               CornerRadius="15">
+            <Grid Margin="0,35,0,0"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  ColumnDefinitions="*,*,*,*">
+                <VerticalStackLayout HorizontalOptions="CenterAndExpand"
+                                     Spacing="10"
+                                     Grid.Column="0">
+                    <Image Source="humidity.png" />
+                    <VerticalStackLayout>
+                        <Label FontAttributes="Bold"
+                               FontSize="14"
+                               HorizontalOptions="Center"
+                               Text="50%" />
+                        <Label FontSize="11"
+                               HorizontalOptions="Center"
+                               Text="Humidity"
+                               TextColor="#7D7D7D" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="CenterAndExpand"
+                                     Spacing="10"
+                                     Grid.Column="1">
+                    <Image Source="wind.png" />
+                    <VerticalStackLayout>
+                        <Label FontAttributes="Bold"
+                               FontSize="14"
+                               HorizontalOptions="Center"
+                               Text="2.6 m/s" />
+                        <Label FontSize="11"
+                               HorizontalOptions="Center"
+                               Text="Wind"
+                               TextColor="#7D7D7D" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="CenterAndExpand"
+                                     Spacing="10"
+                                     Grid.Column="2">
+                    <Image Source="pressure.png" />
+                    <VerticalStackLayout>
+                        <Label FontAttributes="Bold"
+                               FontSize="14"
+                               HorizontalOptions="Center"
+                               Text="1011 hpa" />
+                        <Label FontSize="11"
+                               HorizontalOptions="Center"
+                               Text="Pressure"
+                               TextColor="#7D7D7D" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="CenterAndExpand"
+                                     Spacing="10"
+                                     Grid.Column="3">
+                    <Image Source="cloudiness.png" />
+                    <VerticalStackLayout>
+                        <Label FontAttributes="Bold"
+                               FontSize="14"
+                               HorizontalOptions="Center"
+                               Text="10%" />
+                        <Label FontSize="11"
+                               HorizontalOptions="Center"
+                               Text="Cloudiness"
+                               TextColor="#7D7D7D" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+
+        </Frame>
+        <VerticalStackLayout Grid.Row="2"
+                             Margin="20,40,0,60"
+                             Spacing="20">
+            <HorizontalStackLayout Spacing="40">
+                <Label FontAttributes="Bold"
+                       FontSize="Small"
+                       Text="Time of Sunrise"
+                       TextColor="Black"
+                       VerticalOptions="Center" />
+                <Label FontAttributes="Bold"
+                       FontSize="Small"
+                       Text="12:00:00 AM"
+                       TextColor="Black"
+                       VerticalOptions="Center" />
+
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="40">
+                <Label FontAttributes="Bold"
+                       FontSize="Small"
+                       Text="Time of Sunset"
+                       TextColor="Black"
+                       VerticalOptions="Center" />
+                <Label FontAttributes="Bold"
+                       FontSize="Small"
+                       Text="12:00:00 AM"
+                       TextColor="Black"
+                       VerticalOptions="Center" />
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="3"
+                               Margin="0,40,0,0">
+            <Entry x:Name="_cityEntry"
+                   Margin="5,0"
+                   BackgroundColor="#7c58c9"
+                   CharacterSpacing="7"
+                   HorizontalTextAlignment="Center"
+                   Text="Brisbane"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   WidthRequest="250" />
+            <Button BackgroundColor="#7c58c9"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    
+                    Text="Get weather" />
+        </HorizontalStackLayout>
+    </Grid>
 </ContentPage>
