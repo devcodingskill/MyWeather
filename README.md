@@ -177,6 +177,45 @@ public DashboardPage(DashboardViewModel viewModel)
  //set string format 
  Text="{Binding Data.clouds.all, StringFormat='{0} %'}" />
 ```
+### Add converter using IValueConverter
+- Add converter file  
+```c
+ public class LongToDateTimeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is int ticks)
+            {
+                return new DateTime(ticks);
+            }
+            if (value is long tick)
+            {
+               return new DateTime(tick);
+            }
+            // Fallback value, could also be something else
+            return DateTime.MinValue;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return Binding.DoNothing;
+        }
+    }
+}
+```
+- use converter on xaml file
+```c
+ <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:LongToDateTimeConverter x:Key="LongToDateConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+//calling converter
+ Text="{Binding Data.dt, Converter={StaticResource LongToDateConverter} ,StringFormat='{0:M}, {0:yyyy}'}"
+```
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
