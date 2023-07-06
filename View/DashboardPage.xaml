@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm ="clr-namespace:MyWeather.ViewModels"
              x:Class="MyWeather.View.DashboardPage"
+             x:DataType="vm:DashboardViewModel"
              Shell.NavBarIsVisible="False"
-             Title="DashboardPage">
+             Title="{Binding Title}">
     <Grid  RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
            VerticalOptions="FillAndExpand">
         <Image Grid.Row="0"
@@ -16,7 +18,7 @@
                              Spacing="20"
                              VerticalOptions="Start">
             <Label FontSize="16"
-                   Text="{Binding }"
+                   Text="{Binding Data.name}"
                    TextColor="White"
                    VerticalOptions="Center" />
         </VerticalStackLayout>

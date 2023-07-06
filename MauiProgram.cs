@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using MyWeather.Services;
+using MyWeather.View;
+using MyWeather.ViewModels;
 
 namespace MyWeather;
 
@@ -18,6 +21,9 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+		builder.Services.AddSingleton<DashboardPage>();
+		builder.Services.AddSingleton<DashboardViewModel>();
+		builder.Services.AddSingleton<WeatherService>();
 
 		return builder.Build();
 	}
