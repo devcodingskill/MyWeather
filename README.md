@@ -102,6 +102,15 @@ public partial class BaseViewModel : ObservableObject
         }
     }
 ```
+
+### Add service to service folder 
+- RemoteDataService => default service that can user on other project (Http call)
+- loggerService => default service that can user on other project (error log)
+- WeatherService
+
+
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
