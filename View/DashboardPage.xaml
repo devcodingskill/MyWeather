@@ -2,10 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm ="clr-namespace:MyWeather.ViewModels"
+             xmlns:converter="clr-namespace:MyWeather.Converter"
              x:Class="MyWeather.View.DashboardPage"
              x:DataType="vm:DashboardViewModel"
              Shell.NavBarIsVisible="False"
              Title="{Binding Title}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:LongToDateTimeConverter x:Key="LongToDateConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <Grid  RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
            VerticalOptions="FillAndExpand">
         <Image Grid.Row="0"
@@ -32,7 +40,7 @@
                        Source="weather.png" />
                 <Label FontAttributes="Bold"
                        FontSize="70"
-                       Text="12"
+                       Text="{Binding Data.main.temp , StringFormat='{0:F0}'}"
                        TextColor="White"
                        VerticalOptions="Center" />
                 <Label FontSize="34"
@@ -42,11 +50,11 @@
             </HorizontalStackLayout>
             <Label FontSize="16"
                    HorizontalOptions="Center"
-                   Text="rain"
+                   Text="{Binding Data.weather_from.main}"
                    TextColor="White" />
             <Label FontSize="12"
                    HorizontalOptions="Center"
-                   Text="June 15,10:30AM"
+                   Text="{Binding Data.dt, Converter={StaticResource LongToDateConverter} ,StringFormat='{0:M}, {0:yyyy}'}"
                    TextColor="White" />
         </VerticalStackLayout>
         <Frame Grid.Row="1"
@@ -68,7 +76,7 @@
                         <Label FontAttributes="Bold"
                                FontSize="14"
                                HorizontalOptions="Center"
-                               Text="50%" />
+                               Text="{Binding Data.main.humidity}" />
                         <Label FontSize="11"
                                HorizontalOptions="Center"
                                Text="Humidity"
@@ -84,7 +92,7 @@
                         <Label FontAttributes="Bold"
                                FontSize="14"
                                HorizontalOptions="Center"
-                               Text="2.6 m/s" />
+                               Text="{Binding Data.wind.speed, StringFormat='{0} m/s'}" />
                         <Label FontSize="11"
                                HorizontalOptions="Center"
                                Text="Wind"
@@ -100,7 +108,7 @@
                         <Label FontAttributes="Bold"
                                FontSize="14"
                                HorizontalOptions="Center"
-                               Text="1011 hpa" />
+                               Text="{Binding Data.main.pressure, StringFormat='{0} hpa' }" />
                         <Label FontSize="11"
                                HorizontalOptions="Center"
                                Text="Pressure"
@@ -115,7 +123,7 @@
                         <Label FontAttributes="Bold"
                                FontSize="14"
                                HorizontalOptions="Center"
-                               Text="10%" />
+                               Text="{Binding Data.clouds.all, StringFormat='{0} %'}" />
                         <Label FontSize="11"
                                HorizontalOptions="Center"
                                Text="Cloudiness"
@@ -136,7 +144,7 @@
                        VerticalOptions="Center" />
                 <Label FontAttributes="Bold"
                        FontSize="Small"
-                       Text="12:00:00 AM"
+                       Text="{Binding Data.sys.sunrise, Converter={StaticResource LongToDateConverter} ,StringFormat='{0:HH}:{0:mm}:{0:ss}'}"
                        TextColor="Black"
                        VerticalOptions="Center" />
 
@@ -149,7 +157,7 @@
                        VerticalOptions="Center" />
                 <Label FontAttributes="Bold"
                        FontSize="Small"
-                       Text="12:00:00 AM"
+                       Text="{Binding Data.sys.sunset, Converter={StaticResource LongToDateConverter} ,StringFormat='{0:HH}:{0:mm}:{0:ss}'}"
                        TextColor="Black"
                        VerticalOptions="Center" />
 

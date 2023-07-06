@@ -21,6 +21,7 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+		//register 
 		builder.Services.AddSingleton<DashboardPage>();
 		builder.Services.AddSingleton<DashboardViewModel>();
 		builder.Services.AddSingleton<WeatherService>();

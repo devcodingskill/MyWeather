@@ -33,12 +33,13 @@ namespace MyWeather.Models
     {
         public Coord coord { get; set; }
         public List<Weather> weather { get; set; }
+        public Weather weather_from { get; set; }
         public string @base { get; set; }
         public Main main { get; set; }
         public int visibility { get; set; }
         public Wind wind { get; set; }
         public Clouds clouds { get; set; }
-        public int dt { get; set; }
+        public long dt { get; set; }
         public Sys sys { get; set; }
         public int timezone { get; set; }
         public int id { get; set; }
@@ -51,8 +52,8 @@ namespace MyWeather.Models
         public int type { get; set; }
         public int id { get; set; }
         public string country { get; set; }
-        public int sunrise { get; set; }
-        public int sunset { get; set; }
+        public long sunrise { get; set; }
+        public long sunset { get; set; }
     }
 
     public class Wind

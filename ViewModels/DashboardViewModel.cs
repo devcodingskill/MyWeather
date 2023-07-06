@@ -33,7 +33,15 @@ namespace MyWeather.ViewModels
                 { lon = -0.1257,
                     lat = 51.5085
                 },
+                weather_from = new Weather() 
+                {
 
+                    id = 802,
+                    main = "Clouds",
+                    description = "scattered clouds",
+                    icon = "03d"
+
+                },
                 weather = new List<Weather>()
                 {
                     new Weather()
@@ -54,8 +62,8 @@ namespace MyWeather.ViewModels
                 @base  = "stations",
                 main =new Main() 
                 {
-                    temp = 291.31,
-                    feels_like = 291.06,
+                    temp = UnitConverters.FahrenheitToCelsius(67.31),
+                    feels_like = UnitConverters.FahrenheitToCelsius(60.31),
                     temp_max = 0,
                     pressure = 1011,
                     humidity = 72,
@@ -68,14 +76,14 @@ namespace MyWeather.ViewModels
                 clouds = new Clouds() { 
                 all =   40
                 },
-                dt = 168857503,
+                dt = 638232480000000000,
                 sys= new Sys()
                 {
                     type = 2,
                     id = 2075535,
                     country="GB",
-                    sunrise = 1688529012,
-                    sunset = 1688588368,
+                    sunrise = 638232480000000000,
+                    sunset = 638233343990000000,
                 },
                 timezone = 3600,
                 id = 2643743,

@@ -108,9 +108,75 @@ public partial class BaseViewModel : ObservableObject
 - loggerService => default service that can user on other project (error log)
 - WeatherService
 
+### Register file in MauiProgram 
+- More detail about .NET dependency injection https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection
+```c
+public static class MauiProgram
+{
+	public static MauiApp CreateMauiApp()
+	{
+		var builder = MauiApp.CreateBuilder();
+		builder
+			.UseMauiApp<App>()
+			.ConfigureFonts(fonts =>
+			{
+				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+			});
 
+#if DEBUG
+		builder.Logging.AddDebug();
+#endif
+		//register 
+		builder.Services.AddSingleton<DashboardPage>();
+		builder.Services.AddSingleton<DashboardViewModel>();
+		builder.Services.AddSingleton<WeatherService>();
 
+		return builder.Build();
+	}
+}
 
+```
+### Connect DashboardPage to DashbordViewModel
+- Inject viewModel to DashboardPage by ask the container to give DashboardView model to class constructer and set binding to the page
+```c
+public DashboardPage(DashboardViewModel viewModel)
+	{
+		InitializeComponent();
+		BindingContext = viewModel;
+	}
+```
+- Set up binding on xaml page and Set data type so it able to user intellisense on xaml file
+```c
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm ="clr-namespace:MyWeather.ViewModels"
+             x:Class="MyWeather.View.DashboardPage"
+             x:DataType="vm:DashboardViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}">
+```
+- Binding data to page by binding from viewModel
+```c
+ <Label FontSize="16"
+                   Text="{Binding Data.name}"
+                   TextColor="White"
+                   VerticalOptions="Center" />
+```
+- String format in xaml 
+```c
+ //set number of decimal point
+ Text="{Binding Data.main.temp , StringFormat='{0:F0}'}"
+
+ //set date time in month and year
+ Text="{Binding Data.dt, Converter={StaticResource LongToDateConverter} ,StringFormat='{0:M}, {0:yyyy}'}"
+
+ //set time
+ Text="{Binding Data.sys.sunrise, Converter={StaticResource LongToDateConverter} ,StringFormat='{0:HH}:{0:mm}:{0:ss}'}" 
+
+ //set string format 
+ Text="{Binding Data.clouds.all, StringFormat='{0} %'}" />
+```
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
