@@ -8,7 +8,10 @@ MyWeather is using .NET Maui for crossing platform
 - Learn how binding data and format string on xaml file
 - Http call
 - Create converter and how to use it  
-
+## Sample image for the project
+<p align="center">
+  <img src="[your_relative_path_here](https://github.com/devcodingskill/MyWeather/blob/master/SampleImage/Screenshot_1.png)" width="350" title="hover text">  
+</p>
 ## Step 
 ### Create the necessary folder for the project using MVVM(S)
 - Models
