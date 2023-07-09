@@ -11,7 +11,7 @@ MyWeather is using .NET Maui for crossing platform
 ## Sample image for the project
 
 <p align="center">
-  <img src="(https://github.com/devcodingskill/MyWeather/blob/master/SampleImage/Screenshot_1.png)" width="350" title="hover text">  
+  <img src="https://github.com/devcodingskill/MyWeather/blob/master/SampleImage/Screenshot_1.png" width="350" title="hover text">  
 </p>
 
 ## Step 
