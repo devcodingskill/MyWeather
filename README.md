@@ -1,6 +1,13 @@
 ﻿# MyWeather
 
-MyWeather is using .NET Maui for crossing platform
+MyWeather is using .NET Maui for crossing platform 
+
+## Golas
+- Use Maui shell for navigation and dependency injection
+- MVVM(S) for data binding
+- Learn how binding data and format string on xaml file
+- Http call
+- Create converter and how to use it  
 
 ## Step 
 ### Create the necessary folder for the project using MVVM(S)
@@ -214,7 +221,11 @@ public DashboardPage(DashboardViewModel viewModel)
 //calling converter
  Text="{Binding Data.dt, Converter={StaticResource LongToDateConverter} ,StringFormat='{0:M}, {0:yyyy}'}"
 ```
-
+## Link use in this project
+- Get API key => https://openweathermap.org/api
+- Convert json to c# => https://json2csharp.com/
+- time convert => https://www.datetimetoticks-converter.com/
+- video for the project => https://www.youtube.com/watch?v=uDaIArfc5LM
 
 ## Contributing
 

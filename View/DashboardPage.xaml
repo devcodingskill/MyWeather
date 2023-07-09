@@ -11,6 +11,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:LongToDateTimeConverter x:Key="LongToDateConverter" />
+            <converter:FahrenheitToCelciusConverter x:Key="FahrenheitToCelciusConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -40,7 +41,7 @@
                        Source="weather.png" />
                 <Label FontAttributes="Bold"
                        FontSize="70"
-                       Text="{Binding Data.main.temp , StringFormat='{0:F0}'}"
+                       Text="{Binding Data.main.temp , Converter={StaticResource FahrenheitToCelciusConverter}}"
                        TextColor="White"
                        VerticalOptions="Center" />
                 <Label FontSize="34"
@@ -171,14 +172,15 @@
                    BackgroundColor="#7c58c9"
                    CharacterSpacing="7"
                    HorizontalTextAlignment="Center"
-                   Text="Brisbane"
+                   Text="{Binding SearchLocation}"
                    TextColor="White"
                    VerticalOptions="Center"
-                   WidthRequest="250" />
+                   WidthRequest="250"
+                   Placeholder="Add location"/>
             <Button BackgroundColor="#7c58c9"
                     BorderColor="White"
                     BorderWidth="1"
-                    
+                    Command="{Binding GetDataCommand}"
                     Text="Get weather" />
         </HorizontalStackLayout>
     </Grid>

@@ -5,6 +5,12 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWeather", "MyWeather.csproj", "{424AE8FC-94FE-4915-BEFD-1D05E36BAA0C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleImage", "SampleImage", "{33FB0B53-B83A-41A0-8541-6D9FBCEC1A6E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Downloads\Apikey.png = ..\..\Downloads\Apikey.png
+		..\..\Downloads\Screenshot_1.png = ..\..\Downloads\Screenshot_1.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

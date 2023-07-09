@@ -11,10 +11,11 @@ namespace MyWeather.ViewModels
        
         [ObservableProperty]
         private Root data;
+        [ObservableProperty]
+        private string searchLocation ;
         public DashboardViewModel(WeatherService weatherService)
         {
-            this.weatherService = weatherService;
-            Title = "Test";
+            this.weatherService = weatherService;            
             GetHardCodeData();
         }
         [RelayCommand]
@@ -22,8 +23,8 @@ namespace MyWeather.ViewModels
         {
             if (Data != null)
                 Data = null;
-
-           Data = await weatherService.GetWeatheData();
+           var test = SearchLocation;
+           Data = await weatherService.GetWeatheData(SearchLocation);
         }
         void GetHardCodeData() 
         {
@@ -62,8 +63,8 @@ namespace MyWeather.ViewModels
                 @base  = "stations",
                 main =new Main() 
                 {
-                    temp = UnitConverters.FahrenheitToCelsius(67.31),
-                    feels_like = UnitConverters.FahrenheitToCelsius(60.31),
+                    temp = 80.31,
+                    feels_like = 60.31,
                     temp_max = 0,
                     pressure = 1011,
                     humidity = 72,
