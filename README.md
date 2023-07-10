@@ -221,6 +221,48 @@ public DashboardPage(DashboardViewModel viewModel)
 //calling converter
  Text="{Binding Data.dt, Converter={StaticResource LongToDateConverter} ,StringFormat='{0:M}, {0:yyyy}'}"
 ```
+- We can add converter to App.xaml so every  xaml file can access it 
+```c
+    //move from  page level 
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm ="clr-namespace:MyWeather.ViewModels"
+             xmlns:converter="clr-namespace:MyWeather.Converter"
+             x:Class="MyWeather.View.DashboardPage"
+             x:DataType="vm:DashboardViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}">
+    
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:LongToDateTimeConverter x:Key="LongToDateConverter" />
+            <converter:FahrenheitToCelciusConverter x:Key="FahrenheitToCelciusConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+//move to App.xaml
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyWeather"
+             xmlns:converter="clr-namespace:MyWeather.Converter"
+             x:Class="MyWeather.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            //move to app
+            <converter:LongToDateTimeConverter x:Key="LongToDateConverter" />
+            <converter:FahrenheitToCelciusConverter x:Key="FahrenheitToCelciusConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+
+
+
+```
 ## Link use in this project
 - Get API key => https://openweathermap.org/api
 - Convert json to c# => https://json2csharp.com/

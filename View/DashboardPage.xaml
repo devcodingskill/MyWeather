@@ -8,12 +8,12 @@
              Shell.NavBarIsVisible="False"
              Title="{Binding Title}">
     
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
             <converter:LongToDateTimeConverter x:Key="LongToDateConverter" />
             <converter:FahrenheitToCelciusConverter x:Key="FahrenheitToCelciusConverter" />
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
 
     <Grid  RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
            VerticalOptions="FillAndExpand">
