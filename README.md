@@ -1,7 +1,9 @@
 ﻿# MyWeather
 
 MyWeather is using .NET Maui for crossing platform 
-Note: you need to get your own api key and replace as this api key had been inactive
+
+_Note: you need to get your own api key and replace as this api key had been inactive_
+
 ## Golas
 - Use Maui shell for navigation and dependency injection
 - MVVM(S) for data binding
